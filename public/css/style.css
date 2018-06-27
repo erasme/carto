@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600');
+
+.container {
+    display: flex;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+
+/***** GENERAL SYLING *****/
+
+/* Colors */
+.white {
+    background-color: #f1f1f1ff !important;
+}
+
+.grey {
+    background-color: #c0b7a2ff !important;  
+  }
+
+.blue {
+    background-color: #7dc6e2ff !important;
+}
+.cyan {
+    background-color: #4fbe9eff !important;
+}
+
+.violet {
+    background-color: #c6abd2ff !important;
+}
+
+.pink {
+    background-color: #f1929bff !important;
+}
+
+.orange {
+    background-color: #fcbe5eff !important;
+}
+
+.yellow {
+    background-color: #f4ea6cff !important;
+}
+
+.blue-text {
+    color: #7dc6e2ff;
+}
+
+
+.col-1, .col-3 {
+    display: flex;
+    flex: 25%;
+    flex-direction: column;
+}
+
+.col-2 {
+    width: 60%;
+}
+
+.panel .card {
+    display: flex;
+    align-items: center;
+    background-color: #f1f1f17d;
+    height: 40px;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+.panel .card img {
+    height: 35px;
+    margin-right: 15px;
+}
+
+.panel .card .number {
+    width: 70px;
+    font-size : 25px;
+    line-height: 25px;
+    font-weight: bold;
+}
+
+.panel .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;height: 70px;
+    font-size: 25px;
+    color: white;
+}
+
+
+/***** MAP STYLING *****/
+
+
+.circle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    
+}
+
+ .circle:hover {
+    width: 30px;
+    height: 30px;
+    transform: scale(1);
+}
