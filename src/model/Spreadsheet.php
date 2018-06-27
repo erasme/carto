@@ -7,7 +7,7 @@
 class Spreadsheet {
     /**
      * Returns an authorized API client.
-     * @return Google_Client the authorized client object
+     * @return bool|Google_Client the authorized client object
      */
     private static function getClient()
     {
@@ -22,9 +22,7 @@ class Spreadsheet {
         if (file_exists($credentialsPath)) {
             $accessToken = json_decode(file_get_contents($credentialsPath), true);
         } else {
-            print "config/credentials.json does not exist\nTo create it check Google Sheets API PHP Quickstart guide";
-            http_response_code(500);
-            return; 
+            return false;
         }
         $client->setAccessToken($accessToken);
 
@@ -61,12 +59,14 @@ class Spreadsheet {
      * @param string $spreadsheetId Google Sheets Id
      * @param string $sheet the name of the sheet to retrieve the data from
      * @param string $range range of the cells to retrieve data from
-     * @return array the values retrieved from the google sheets api
+     * @return bool|array the values retrieved from the google sheets api
      */
     public static function get($spreadsheetId, $sheet, $range)
     {
         // Get the API client and construct the service object.
         $client = Spreadsheet::getClient();
+        if (!$client) { return false; }
+        
         $service = new Google_Service_Sheets($client);
         $response = $service->spreadsheets_values->get($spreadsheetId, "'$sheet'!$range");
  

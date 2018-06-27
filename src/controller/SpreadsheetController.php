@@ -24,8 +24,13 @@ class SpreadsheetController
             return;
         }
         $values = Spreadsheet::get($spreadsheet->spreadsheet_id, $spreadsheet->sheet, 'A2:Z');
-
-        if (empty($values)) {
+        if(!$values) {
+            print "An error occured when trying to configure Google_Client\n";
+            print "Potential cause: config/credentials.json does not exist\n";
+            print "This file holds the json token retrieved after OAuth login\n";
+            print "To create it check Google Sheets API PHP Quickstart guide";
+            http_response_code(500);
+        } else if (empty($values)) {
             print "No data found.\n";
             http_response_code(404);
         } else {
