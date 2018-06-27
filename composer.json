@@ -1,5 +1,20 @@
 {
+  "name": "erasme/carto",
+  "description": "",
+  "type": "project",
+  "license": "AGPL v3",
+  "authors": [
+    {
+      "name": "Nelson Gonçalves",
+      "email": "ngoncalves@erasme.org"
+    }
+  ],
   "require": {
     "google/apiclient": "^2.0"
+  },
+  "autoload": {
+    "psr-0": {
+      "": ["src/controller/", "src/model/", "src/view/" ,"./src"]
+    }
   }
 }
