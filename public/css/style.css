@@ -1,4 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600');
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Open Sans Regular'), local('OpenSans-Regular'), url(../fonts/OpenSans-Regular.ttf) format('truetype');
+  }
 
 .container {
     display: flex;
@@ -11,6 +16,7 @@
 /* Colors */
 .white {
     background-color: #f1f1f1ff !important;
+    font-family: 'Open Sans','Source Sans Pro', sans-serif;
 }
 
 .grey {
@@ -74,9 +80,11 @@
     font-size : 25px;
     line-height: 25px;
     font-weight: bold;
+    font-family: lo-resteens;
 }
 
 .panel .title {
+    font-family: lo-resteens;
     display: flex;
     justify-content: center;
     align-items: center;height: 70px;
