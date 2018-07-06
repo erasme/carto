@@ -1,0 +1,20 @@
+/* FOR A0 PRINTING */
+@media print and (min-width: 1000px)  and (max-width: 3999px){
+    .container {
+        font-size: 50px;
+    }
+    .panel .card {
+        height: 3.8%;
+    }
+    .panel .title {
+        font-size: 60px;
+    }
+
+    .panel .card .number {
+        font-size: 50px;
+        line-height: 1.2;
+        font-weight: bold;
+        margin-right: 40px;
+    }
+}
+
