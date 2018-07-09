@@ -77,6 +77,7 @@ function SVG(tag) {
 var drawPoint = function(x,y,color) {
       var $svg = $("svg");
       $(SVG('circle'))
+          .attr('onload','makeDraggable(evt)')
           .attr('class', 'point')
           .attr('cx', x)
           .attr('cy', y)
@@ -89,22 +90,23 @@ var drawPoint = function(x,y,color) {
 var drawFeaturedPoint = function(subtitle,url,x,y,color) {
 
   //Put the string into lines of text for svg display
-  var test = '';
     var words = subtitle.split(' ');
     var lines = [];
+    console.log(words);
     var buffer = '';
-    var a = 4;
-    //console.log(words);
-    for (i=0; i<= words.length; i++){
-      if (i === a){
-        for(a=0; a< 2; a++) {
-          buffer = buffer + words[i] + ' ';
-        }
-        a = i+a;
+    var a = 3;
+    $.each(words, function(index,word) {
+      if(index == a){
+        buffer = buffer + word + ' ';
         lines.push(buffer);
-        buffer = '';
+        a = a+a;
+        buffer = "";
       }
-    }
+      else {
+        buffer = buffer + word + ' ';
+      }
+    });
+    console.log(buffer);
     console.log(lines);
 
   var $svg = $("svg");
