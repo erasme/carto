@@ -27,7 +27,10 @@
         <!-- JQUERY -->
         <script src="../js/jquery-3.3.1.min.js"></script>
         <!-- CUSTOM -->
-        <script src="../js/drag.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenLite.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/utils/Draggable.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/plugins/CSSPlugin.min.js"></script>
+
         <script src="../js/script.js"></script>
     </body>
 </html>

@@ -3,10 +3,12 @@ $( document ).ready(function() {
     // GET THE DATA
     $.getJSON( "../exemple.json", function( data ) {
       i=0;
+      idName = 0;
       $.each(data, function(index,category) {
         //console.log(category);
         i++;
-        if (i<= 4){
+        // Number of panels by column
+        if (i<= 3){
           legendDisplay("col-1", category);
         }
         else {
@@ -28,12 +30,17 @@ $( document ).ready(function() {
               //Display the picture point
               if(locations.subtitle.length === 0 || locations.url.length === 0){
                 drawPoint(coord[0], coord[1], category.color);
+                dragSvg('.point');
               }
               else {
+                idName++;
                   console.log(locations.subtitle);
                   console.log(locations.url);
-                  drawFeaturedPoint(locations.subtitle, locations.url, coord[0], coord[1], category.color);
-                  
+                  drawFeaturedPoint(locations.subtitle, locations.url, coord[0], coord[1], category.color, idName);
+                  console.log('INDEX : ' + idName)
+                  dragSvg('.featured-point');
+                  $('.featured-point').each(function() {
+                  })
               }
               console.log(coord);
             }
@@ -49,14 +56,14 @@ function legendDisplay(colClass, category){
   $('.'+colClass)
         .append('<div class="panel">\
         <div  style="background-color:'+category.color+' "  class=" card title">'+category.title+'</div>\
-        <div class="card"><span>'+isUrl(category.key_1)+'</span><p>'+category.value_1+'</p></div>\
-        <div class="card white"><span>'+isUrl(category.key_2)+'</span><p>'+category.value_2+'</p></div>\
-        <div class="card"><span>'+isUrl(category.key_3)+'</span> <p>'+category.value_3+'</p></div>')
+        <div class="card"><span>'+isUrl(category.key_1, category.color)+'</span><p>'+category.value_1+'</p></div>\
+        <div class="card white"><span>'+isUrl(category.key_2, category.color)+'</span><p>'+category.value_2+'</p></div>\
+        <div class="card"><span>'+isUrl(category.key_3, category.color)+'</span> <p>'+category.value_3+'</p></div>')
        
 }
 
 // Checks if value is an url and outputs an html image
-function isUrl(value="0") {
+function isUrl(value="0", color="black") {
   var pattern = /(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
   if(value.match(pattern)) {
     console.log('Is URL');
@@ -64,7 +71,7 @@ function isUrl(value="0") {
   }
   else{
     console.log('Is number value')
-    return '<p class="number blue-text">'+value+'</p>';
+    return '<p class="number" style="color: '+color+'">'+value+'</p>';
   }
 }
 
@@ -77,7 +84,6 @@ function SVG(tag) {
 var drawPoint = function(x,y,color) {
       var $svg = $("svg");
       $(SVG('circle'))
-          .attr('onload','makeDraggable(evt)')
           .attr('class', 'point')
           .attr('cx', x)
           .attr('cy', y)
@@ -87,7 +93,10 @@ var drawPoint = function(x,y,color) {
 };
 
 // Draws a picture point on the svg map
-var drawFeaturedPoint = function(subtitle,url,x,y,color) {
+var drawFeaturedPoint = function(subtitle,url,x,y,color, idName) {
+
+  x = parseInt(x);
+  y = parseInt(y);
 
   //Put the string into lines of text for svg display
     var words = subtitle.split(' ');
@@ -113,19 +122,43 @@ var drawFeaturedPoint = function(subtitle,url,x,y,color) {
   $(SVG('image'))
     .attr('class', 'featured-point')
     .attr('href', url)
-    .attr('width', '100')
+    .attr('width', '150')
     .attr('x', x)
     .attr('y', y)
     .attr('fill', color)
     .appendTo($svg);
     
   $(SVG('text'))
-    .attr('id', 'featured-text')
+    .attr('id', 'featured-text-'+idName)
     .attr('font-size', '18')
     .attr('font-family', 'Open Sans Regular')
     .attr('x', x)
-    .attr('y', y)
+    .attr('y', y = y +150)
     .appendTo($svg);
-  $('#featured-text').append(subtitle);
+ //$('#featured-text-'+idName).append(subtitle);
+  /*$.each(lines, function(index,sentence) {  
+    $('#featured-text-'+idName).append('<tspan x="'+x+'" dy="15">'+sentence+'</tspan>');
+  });*/
+  $('#featured-text-'+idName).append(' <tspan x="100" dy="15">Dispositif transdisciplinaire visant à </tspan>');
 
 };
+
+
+function dragSvg(element){
+  // Makes the point draggable       
+  Draggable.create(element, {
+    type:"x,y",
+    bounds:"svg",
+    overshootTolerance:0,
+    throwProps:true,
+    onDragEnd: function() {
+      console.log('Drag ended');
+      console.log(this.x);
+
+      var realCoord = this.x.getScreenCTM().inverse();
+      console.log('REAl COORD :' + realCoord);
+    }
+    });
+}
+
+
