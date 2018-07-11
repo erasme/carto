@@ -1,19 +1,37 @@
+/*FONT IMPORT*/
+
 @font-face {
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 400;
     src: local('Open Sans Regular'), local('OpenSans-Regular'), url(../fonts/OpenSans-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Open Sans Regular'), local('OpenSans-SemiBold'), url(../fonts/OpenSans-SemiBold.ttf) format('truetype');
   }
 
-  @font-face {
+@font-face {
     font-family: 'lo-resteens';
     font-style: normal;
     font-weight: 400;
     src: local('lo-resteens'), local('lo-resteens'), url(../fonts/LRTWREGU.TTF) format('truetype');
+}
+
+@font-face {
+    font-family: 'lo-resteens';
+    font-style: normal;
+    font-weight: 600;
+    src: local('lo-resteens'), local('lo-resteens'), url(../fonts/LRTWBOLD.TTF) format('truetype');
   }
 
-
 /***** GENERAL SYLING *****/
+body {
+    background-color: #EEEEEE; 
+}
 
 .container {
     width: 100%;
@@ -52,16 +70,46 @@
     width: 90%;
 }
 
+
+/* SPECIFIC STYLING */
+
+.introduction h2 {
+    font-family: lo-resteens;
+    font-size: 40px;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.introduction p {
+    font-weight: 600;
+    font-size: 17px;
+    padding-top: 15px;
+    border-top: solid #828282 1px;
+}
+
+
 .panel {
+    -webkit-box-shadow: 1px 2px 6px 2px rgba(0,0,0,0.23); 
+    box-shadow: 1px 2px 6px 2px rgba(0,0,0,0.23);
+    margin-bottom: 4%;
 }
 
 .panel .card {
     display: flex;
     align-items: center;
     background-color: #f1f1f17d;
-    height: 5%;
-    margin-bottom: 2%;
+    height: 4%;
     padding: 10px;
+    border-bottom: solid #828282 1px;
+}
+
+.panel .card:first-child, .panel .card:last-child {
+    border-bottom: none;
+}
+
+.panel .card span {
+    width: 55px;
+    text-align: right;
 }
 
 .panel .card img {
@@ -72,19 +120,21 @@
 .panel .card .number {
     width: 10%;
     margin-right: 15px;
-    line-height: 100px;
     font-weight: bold;
+    font-size: 15px;
     font-family: lo-resteens;
 }
 
 .panel .title {
     font-family: lo-resteens;
+    font-weight: 600;
     height: 6%;
     display: flex;
     justify-content: center;
+    text-align: center;
     align-items: center;
     font-size: medium;
-    color: black;
+    color: white;
 }
 
 

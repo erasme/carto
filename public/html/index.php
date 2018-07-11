@@ -10,10 +10,10 @@
             <div class="col-1">
                 <!-- INTRODUCTION -->
                 <div class="introduction">
-                    <div class="logo">
-                        <img width="100%" src="../resources/pictures/logo_erasme.png">
-                    </div>
-                    <p>Lorem ipsum sit dolor sit amet cosecudur testetsgqisfsdf</p>
+                    <h2>Cartographie des projets</h2>
+                    <p>
+                        Bienvenue sur la cartographie 2017-2018 des projets d'Erasme, living lab de la Métropole de Lyon.
+                    </p>
                 </div>
                 
             </div>
