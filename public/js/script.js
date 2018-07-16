@@ -155,10 +155,50 @@ function dragSvg(element){
       console.log('Drag ended');
       console.log(this.x);
 
-      var realCoord = this.x.getScreenCTM().inverse();
-      console.log('REAl COORD :' + realCoord);
+      mouseLocation();
+
+      /*var realCoord = this.x.getScreenCTM().inverse();
+      console.log('REAl COORD :' + realCoord);*/
     }
     });
 }
 
+
+function mouseLocation() {
+  // Find your root SVG element
+  var svg = document.querySelector('svg');
+
+  // Create an SVGPoint for future math
+  var pt = svg.createSVGPoint();
+
+  // Get point in global SVG space
+  function cursorPoint(evt="ondrag"){
+    pt.x = evt.clientX; pt.y = evt.clientY;
+    console.log(pt.matrixTransform(svg.getScreenCTM().inverse()));
+    return pt.matrixTransform(svg.getScreenCTM().inverse());
+  }
+
+  svg.addEventListener('mousemove',function(evt){
+    var loc = cursorPoint(evt);
+    // Use loc.x and loc.y here
+    //console.log(loc);
+  },false);
+}
+
+/*function mouseMove(e)
+{
+    var mouseX, mouseY;
+
+    if(e.offsetX) {
+        mouseX = e.offsetX;
+        mouseY = e.offsetY;
+    }
+    else if(e.layerX) {
+        mouseX = e.layerX;
+        mouseY = e.layerY;
+    }
+    console.log('mouseX : '+ mouseX + 'mouseY : ' + mouseY);
+
+    /* do something with mouseX/mouseY */
+//}
 
