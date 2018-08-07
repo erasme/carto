@@ -21,7 +21,24 @@
             <div class="col-2">
                     <?php include("../resources/pictures/grand_lyon.svg"); ?> 
             </div>
-            <div class="col-3">
+            <div class="partners">
+                <?php 
+                // Gets every partner logo in the folder then display it
+                /*$path = "../resources/pictures/logo-partners";
+                if ($handle = opendir($path)) {
+
+                    while (false !== ($entry = readdir($handle))) {
+                
+                        if ($entry != "." && $entry != "..") {
+                
+                            print '<img src="'.$path.'/'.$entry.'">';
+                        }
+                    }
+                
+                    closedir($handle);
+                }*/
+
+                ?>
             </div>
         </div>
         <!-- JQUERY -->
