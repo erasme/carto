@@ -7,15 +7,18 @@
     </head>
     <body>
         <div class="container">
-            <div class="col-1">
+            <div class="col-wrapper">
                 <!-- INTRODUCTION -->
                 <div class="introduction">
-                    <h2>Cartographie des projets</h2>
+                        <h2>Une année à Erasme 2017-2018</h2>
                     <p>
                         Bienvenue sur la cartographie 2017-2018 des projets d'Erasme, living lab de la Métropole de Lyon.
                     </p>
                 </div>
-                
+                <div class="col-1">
+                </div>
+                <div class="col-3">
+                </div>
             </div>
             <!--MAP DISPLAY-->
             <div class="col-2">
