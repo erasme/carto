@@ -11,9 +11,9 @@
                 <!-- INTRODUCTION -->
                 <div class="introduction">
                         <h2>Une année à Erasme 2017-2018</h2>
-                    <p>
-                        Bienvenue sur la cartographie 2017-2018 des projets d'Erasme, living lab de la Métropole de Lyon.
-                    </p>
+                        <p>
+                            Bienvenue sur la cartographie 2017-2018 des projets d'Erasme, living lab de la Métropole de Lyon.
+                        </p>
                 </div>
                 <div class="col-1">
                 </div>
@@ -46,11 +46,12 @@
         </div>
         <!-- JQUERY -->
         <script src="../js/jquery-3.3.1.min.js"></script>
-        <!-- CUSTOM -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenLite.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/utils/Draggable.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/plugins/CSSPlugin.min.js"></script>
+        <!-- GSAP  -->
+        <script src="../js/gsap/TweenLite.min.js"></script>
+        <script src="../js/gsap/Draggable.min.js"></script>
+        <script src="../js/gsap/CSSPlugin.min.js"></script>
 
+        <!-- CUSTOM -->
         <script src="../js/script.js"></script>
     </body>
 </html>
