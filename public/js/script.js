@@ -1,5 +1,11 @@
+var defaultColors = ['#3D5DA6', '#5EC5DC', '#7D75B4', '#AFCD44', '#D6604C', '#E01D5C', '#F6B030'];
+
+var circleAngle = 0;
+
+
 $(document).ready(function () {
-  var circleAngle = 0;
+  console.log(defaultColors);
+
   // GET THE DATA
   $.getJSON("/carto/api.php/spreadsheet/", function (data) {
     i = 0;
@@ -71,7 +77,12 @@ function isUrl(value = "0", color = "black") {
 
 
   if(value.match(hexPattern)) {
-    return '<img src=../resources/pictures/icons/'+color.replace('#', '%23')+'/'+value+'>';
+    if (defaultColors.includes(color)) {
+      return '<img src=../resources/pictures/icons/'+color.replace('#', '%23')+'/'+value+'>';
+    }
+    else {
+      return '<img src=../resources/pictures/icons/default/'+value+'>';
+    }
   }
   //Is URL
   else if (value.match(urlPattern)) {
