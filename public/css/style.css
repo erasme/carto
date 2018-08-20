@@ -29,9 +29,6 @@
   }
 
 /***** GENERAL SYLING *****/
-body {
-    background-color: #EEEEEE; 
-}
 
 .container {
     width: 100%;
@@ -156,3 +153,15 @@ body {
 
 }
 
+
+/**** PARTNERS *********/
+.partners {
+    display: inline-block;
+    float: left;
+}
+
+.partners img {
+    width: 3.5vw;
+    vertical-align: middle;
+    padding: 8px;
+}

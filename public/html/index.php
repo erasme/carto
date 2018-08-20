@@ -27,7 +27,7 @@
             <div class="partners">
                 <?php 
                 // Gets every partner logo in the folder then display it
-                /*$path = "../resources/pictures/logo-partners";
+                $path = "../resources/pictures/logo-partners";
                 if ($handle = opendir($path)) {
 
                     while (false !== ($entry = readdir($handle))) {
@@ -39,7 +39,7 @@
                     }
                 
                     closedir($handle);
-                }*/
+                }
 
                 ?>
             </div>
