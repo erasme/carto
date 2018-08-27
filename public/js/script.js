@@ -1,6 +1,19 @@
-var defaultColors = ['#3D5DA6', '#5EC5DC', '#7D75B4', '#AFCD44', '#D6604C', '#E01D5C', '#F6B030'];
 
+
+// The svg to append
+var $svg = $("#points");
+
+// Featured image circle path params
+var radius = 350;
+var center_x = 344;
+var center_y = 458;
 var circleAngle = 0;
+
+/* Parameters for picto display 
+   If you want to add new colors just add a folder with the hex colors in resources/pictures/icons
+   And add the color into this array 
+*/
+var defaultColors = ['#3D5DA6', '#5EC5DC', '#7D75B4', '#AFCD44', '#D6604C', '#E01D5C', '#F6B030'];
 
 
 $(document).ready(function () {
@@ -34,8 +47,9 @@ $(document).ready(function () {
           if (coord[index] === undefined || coord[index].length == 0) { }
           else {
             
-
+            var pointCoord = {'x': coord[0], 'y': coord[1] };
             //Display the picture point
+           
             if (locations.subtitle.length === 0 || locations.url.length === 0) {
               drawPoint(coord[0], coord[1], category.color);
               dragSvg('.point');
@@ -43,14 +57,13 @@ $(document).ready(function () {
             else {
               idName++;
               FeaturedPointCoord = drawFeaturedPoint(locations.subtitle, locations.url, category.color, idName, circleAngle);
-              //drawLine(311, 641,FeaturedPointCoord.x+121,FeaturedPointCoord.y+54, category.color );
-              drawPoint(coord[0], coord[1], category.color);
-              //console.log('TEST : ' + test.x);
+             // drawLine(pointCoord.x, pointCoord.y,FeaturedPointCoord.x,FeaturedPointCoord.y-90, category.color );
+              console.log(pointCoord);
               dragSvg('.featured-point');
               $('.featured-point').each(function () {
               });
+              circleAngle += 25.71;
             }
-            circleAngle = circleAngle+8;
           }
         });
       });
@@ -101,7 +114,6 @@ function SVG(tag) {
 
 // Draws a point on the svg map
 var drawPoint = function (x, y, color) {
-  var $svg = $("svg");
   $(SVG('circle'))
     .attr('class', 'point')
     .attr('cx', x)
@@ -113,7 +125,6 @@ var drawPoint = function (x, y, color) {
 
 // Draws a line on the svg between featured image and point marker
 var drawLine = function (x1, y1, x2, y2, color) {
-  var $svg = $("svg");
   $(SVG('line'))
     .attr('class', 'line')
     .attr('x1', x1)
@@ -128,16 +139,11 @@ var drawLine = function (x1, y1, x2, y2, color) {
 // Draws a picture point on the svg map
 var drawFeaturedPoint = function (subtitle, url,color, idName, angle) {
 
-  //
-  var radius = 350;
-  var center_x = 344;
-  var center_y = 458;
-
   // Calculate the right xy to place the featuredPoint following a cirlce path
-  var x = center_x + radius * Math.cos(-angle*Math.PI/180) * 1;
-  var y = center_y + radius * Math.sin(-angle*Math.PI/180) * 1;
+  var x = center_x + radius * Math.cos(angle*Math.PI/180) * 1;
+  var y = center_y + radius * Math.sin(angle*Math.PI/180) * 1;
 
-  console.log('x : '+ x + 'y :' + y);
+  //console.log('x : '+ x + 'y :' + y);
 
   //Put the string into lines of text for svg display
   var words = subtitle.split(' ');
@@ -178,7 +184,7 @@ var drawFeaturedPoint = function (subtitle, url,color, idName, angle) {
     .attr('fill', color)
     .appendTo($svg);
 
-  /*$(SVG('text'))
+  $(SVG('text'))
     .attr('id', 'featured-text-' + idName)
     .attr('font-size', '18')
     .attr('font-family', 'Open Sans Regular')
@@ -189,7 +195,7 @@ var drawFeaturedPoint = function (subtitle, url,color, idName, angle) {
   $.each(lines, function(index,sentence) {  
     $('#featured-text-'+idName).append('<tspan x="'+x+'" dy="15">'+sentence+'</tspan>');
   });
-  $('#featured-text-' + idName).append(' <tspan x="100" dy="15">Dispositif transdisciplinaire visant à </tspan>');*/
+  $('#featured-text-' + idName).append(' <tspan x="100" dy="15">Dispositif transdisciplinaire visant à </tspan>');
   coord = {"x": x, "y": y};
   return coord;
 
