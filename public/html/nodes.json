@@ -1,0 +1,161 @@
+{
+  "nodes": [
+    {
+      "id": "Dvp économique / innovation",
+      "group": 1
+    },
+    {
+      "id": "Éducation",
+      "group": 1
+    },
+    {
+      "id": "Culture",
+      "group": 1
+    },
+    {
+      "id": "Mobilité",
+      "group": 1
+    },
+    {
+      "id": "Santé / viellissement / prévention / Habitat / Solidarité",
+      "group": 1
+    },
+    {
+      "id": "Transformation interne",
+      "group": 1
+    }
+  ],
+  "links": [
+    {
+      "source": "Dvp économique / innovation",
+      "target": "Évènements / meet-up",
+      "value": 1
+    },
+    {
+      "source": "Dvp économique / innovation",
+      "target": "Totémigo",
+      "value": 1
+    },
+    {
+      "source": "Dvp économique / innovation",
+      "target": "Museopic",
+      "value": 1
+    },
+    {
+      "source": "Dvp économique / innovation",
+      "target": "Thématix Ville Intelligente",
+      "value": 1
+    },
+    {
+      "source": "Dvp économique / innovation",
+      "target": "Workshop DSAA VR",
+      "value": 1
+    },
+    {
+      "source": "Éducation",
+      "target": "CCN",
+      "value": 1
+    },
+    {
+      "source": "Éducation",
+      "target": "Laclasse.com",
+      "value": 1
+    },
+    {
+      "source": "Éducation",
+      "target": "Edumix",
+      "value": 1
+    },
+    {
+      "source": "Éducation",
+      "target": "Échappée Belle",
+      "value": 1
+    },
+    {
+      "source": "Éducation",
+      "target": "Kiosko.phonie",
+      "value": 1
+    },
+    {
+      "source": "Éducation",
+      "target": "V-AIR Sport",
+      "value": 1
+    },
+    {
+      "source": "Culture",
+      "target": "Ludomuse",
+      "value": 1
+    },
+    {
+      "source": "Culture",
+      "target": "Kiosko.phonie",
+      "value": 1
+    },
+    {
+      "source": "Culture",
+      "target": "V-AIR Sport",
+      "value": 1
+    },
+    {
+      "source": "Culture",
+      "target": "Enseignement artistique (AMO)",
+      "value": 1
+    },
+    {
+      "source": "Culture",
+      "target": "Mirage / Culture Experience Days",
+      "value": 1
+    },
+    {
+      "source": "Mobilité",
+      "target": "Challenge transport",
+      "value": 1
+    },
+    {
+      "source": "Mobilité",
+      "target": "5 projets",
+      "value": 1
+    },
+    {
+      "source": "Mobilité",
+      "target": "Parc P+R",
+      "value": 1
+    },
+    {
+      "source": "Mobilité",
+      "target": "Brise Glace",
+      "value": 1
+    },
+    {
+      "source": "Santé / viellissement / prévention / Habitat / Solidarité",
+      "target": "Table tactile",
+      "value": 1
+    },
+    {
+      "source": "Santé / viellissement / prévention / Habitat / Solidarité",
+      "target": "Serious Game",
+      "value": 1
+    },
+    {
+      "source": "Santé / viellissement / prévention / Habitat / Solidarité",
+      "target": "Maison miniature",
+      "value": 1
+    },
+    {
+      "source": "Santé / viellissement / prévention / Habitat / Solidarité",
+      "target": "Funambulium",
+      "value": 1
+    },
+
+    {
+      "source": "Transformation interne",
+      "target": "Bureau 2.0",
+      "value": 1
+    },
+    {
+      "source": "Transformation interne",
+      "target": "Challenge de l'innovation",
+      "value": 1
+    }
+  ]
+}

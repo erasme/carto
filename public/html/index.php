@@ -22,7 +22,16 @@
             </div>
             <!--MAP DISPLAY-->
             <div class="col-2">
-                    <?php include("../resources/pictures/grand_lyon.svg"); ?> 
+                <!--<svg id="points"></svg>-->
+                    <svg>
+                        <image x="360" y="290" width="30%"  xlink:href="../resources/pictures/grand_lyon.svg" /> 
+                        <text x="100" y="100">
+                            <tspan dx="10" dy="20">TEST</tspan>
+                            <tspan dx="10" dy="20">TEST 2</tspan>
+                            <tspan dx="10" dy="20">TEST 3</tspan>
+                        </text>
+                    </svg>
+                   
             </div>
             <div class="partners">
                 <?php 

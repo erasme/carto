@@ -65,9 +65,8 @@
 
 .col-2 {
     float: left;
-    width: 40%;
-    padding-left: 5%;
-    padding-right: 5%;
+    width: 58%;
+
 }
 
 .col-2 #Calque_1 {
@@ -140,7 +139,8 @@
 /***** MAP STYLING *****/
 
 .col-2 svg {
-    width: 250px;
+    width: 100%;
+    height: 100%;
 }
 
 .point {
@@ -148,7 +148,7 @@
 }
 
 .point:hover {
-    r: 20;
+    r: 10;
     transition: r 0.2s ease-in;
 
 }
