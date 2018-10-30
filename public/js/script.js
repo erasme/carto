@@ -1,24 +1,12 @@
-
-
 // The svg to append
 var $svg = $("svg");
 
-// Featured image circle path params
-var radius = 250;
-var Textradius = 300;
-var center_x = 450;
-var center_y = 458;
-var circleAngle = 0;
-
+// Featured image location params
+var featuredLocX = 800;
+var featuredLocY = 150;
+var featuredPointSpacing = 0;
 
 var steps = 0;
-var count = 0;
-
-/* Parameters for picto display 
-   If you want to add new colors just add a folder with the hex colors in resources/pictures/icons
-   And add the color into this array 
-*/
-var defaultColors = ['#3D5DA6', '#5EC5DC', '#7D75B4', '#AFCD44', '#D6604C', '#E01D5C', '#F6B030'];
 
 
 $(document).ready(function () {
@@ -68,7 +56,6 @@ $(document).ready(function () {
           //console.log(locations);
           coord = locations.coordinates.split(",");
           var pointCoord = {'x': coord[0], 'y': coord[1] };
-          //var lines = {'type' :"point", x: 15, y: 15 };
           // If location has no coordinates
           if (coord[index] === undefined || coord[index].length == 0) { }
           else {
@@ -78,24 +65,19 @@ $(document).ready(function () {
               dragSvg('.point');
             }
             else {
+
               idName++;
               drawPoint(pointCoord.x, pointCoord.y, category.color);
-              FeaturedPointCoord = drawFeaturedPoint(locations.url, category.color, circleAngle);
+              var featuredP = FeaturedPointCoord = drawFeaturedPoint(locations.url, category.color, featuredLocX-100, featuredLocY+featuredPointSpacing);
+              drawFeaturedText(idName,locations.subtitle, featuredLocX-100, featuredLocY+featuredPointSpacing+10);
               console.log(locations.subtitle);
-              drawFeaturedText(idName,locations.subtitle, circleAngle);
-              console.log("Circle angle : " + circleAngle);
-              /*if (circleAngle <= 90){
-                drawLine(pointCoord.x, pointCoord.y,FeaturedPointCoord.x+25,FeaturedPointCoord.y+30, category.color );
-              }
-              if (circleAngle <= 180 && circleAngle > 90){
-                drawLine(pointCoord.x, pointCoord.y,FeaturedPointCoord.x+60,FeaturedPointCoord.y+0, category.color );
-              }*/
-              drawLine(pointCoord.x, pointCoord.y,FeaturedPointCoord.x+50,FeaturedPointCoord.y+50, category.color );
-              
+              featuredLocY = featuredLocY + 50;
+              drawLine(pointCoord.x, pointCoord.y,featuredP.x, featuredP.y, category.color );
+      
               console.log(pointCoord.x);
               $('.featured-point').each(function () {
               });
-              circleAngle += 360/steps;
+              featuredPointSpacing += 300/steps;
             }
           
           }
@@ -112,13 +94,14 @@ $(document).ready(function () {
  * @param {object} category an object with color and a string value
  */
 function legendDisplay(colClass, category) {
-  $('.' + colClass)
-    .append('<div class="panel">\
-        <div  style="background-color:'+ category.color + ' "  class=" card title">' + category.title + '</div>\
-        <div class="card"><span>'+ isUrl(category.key_1, category.color) + '</span><p>' + category.value_1 + '</p></div>\
-        <div class="card white"><span>'+ isUrl(category.key_2, category.color) + '</span><p>' + category.value_2 + '</p></div>\
-        <div class="card"><span>'+ isUrl(category.key_3, category.color) + '</span> <p>' + category.value_3 + '</p></div>')
-
+  if (category.title || category.color){
+    $('.' + colClass)
+      .append('<div class="panel">\
+          <div style="background-color:'+ category.color + ' "  class=" card title">' + category.title + '</div>\
+          <div style="border-color:'+ category.color + ' " class="card"><span>'+ isUrl(category.key_1, category.color) + '</span><p>' + category.value_1 + '</p></div>\
+          <div style="border-color:'+ category.color + ' " class="card white"><span>'+ isUrl(category.key_2, category.color) + '</span><p>' + category.value_2 + '</p></div>\
+          <div style="border-color:'+ category.color + ' " class="card"><span>'+ isUrl(category.key_3, category.color) + '</span> <p>' + category.value_3 + '</p></div>')
+  }
 }
 
 
@@ -130,23 +113,17 @@ function legendDisplay(colClass, category) {
 function isUrl(value = "0", color = "black") {
   var urlPattern = /(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
   var hexPattern =  /^[\w,\s-]+\.[A-Za-z]{3}$/g;
+  var isNumber = /^[0-9]*$/g;
 
 
-  if(value.match(hexPattern)) {
-    if (defaultColors.includes(color)) {
-      return '<img src=../resources/pictures/icons/'+color.replace('#', '%23')+'/'+value+'>';
-    }
-    else {
-      return '<img src=../resources/pictures/icons/default/'+value+'>';
-    }
-  }
-  //Is URL
-  else if (value.match(urlPattern)) {
+  if(value.match(urlPattern)){
     return '<img src="' + value + '">';
   }
-  //Is Number value
-  else {
+  else if(value.match(isNumber)){
     return '<p class="number" style="color: ' + color + '">' + value + '</p>';
+  }
+  else {
+    return '<i style="color: ' + color + '" class="fa fa-'+ value +'"></i>';
   }
 }
 
@@ -187,7 +164,7 @@ var drawLine = function (x1, y1, x2, y2, color) {
     .attr('y1', y1)
     .attr('x2', x2)
     .attr('y2', y2)
-    .attr('style', "stroke:"+color+";stroke-width:2")
+    .attr('style', "stroke:"+color+";stroke-width:3")
     .appendTo($svg);
 };
 
@@ -198,33 +175,44 @@ var drawLine = function (x1, y1, x2, y2, color) {
  * @param {string} color 
  * @param {number} angle 
  */
-var drawFeaturedPoint = function (url,color, angle) {
+var drawFeaturedPoint = function (url,color, x, y) {
 
   // Calculate the right xy to place the featuredPoint following a cirlce path
-  var x = center_x + radius * Math.cos(angle*Math.PI/180) * 1;
-  var y = center_y + radius * Math.sin(angle*Math.PI/180) * 1;
-
+  //var x = center_x + radius * Math.cos(angle*Math.PI/180) * 1;
+  //var y = center_y + radius * Math.sin(angle*Math.PI/180) * 1;
   //console.log('x : '+ x + 'y :' + y);
   var $svg = $("svg");
 
-  $(SVG('circle'))
-    .attr('class', 'featured-border')
-    .attr('cx', x+35)
-    .attr('cy', y+35)
-    .attr('r', 40)
-    .attr('fill', color)
+  // Vertical line
+  $(SVG('line'))
+    .attr('class', 'line')
+    .attr('x1', x+50)
+    .attr('y1', y+80)
+    .attr('x2', x+50)
+    .attr('y2', y+30)
+    .attr('style', "stroke:"+color+";stroke-width:3")
     .appendTo($svg);
+
+  // Horizontal line
+  $(SVG('line'))
+    .attr('class', 'line')
+    .attr('x1', x-50)
+    .attr('y1', y+55)
+    .attr('x2', x+50)
+    .attr('y2', y+55)
+    .attr('style', "stroke:"+color+";stroke-width:3")
+    .appendTo($svg);  
 
   $(SVG('image'))
     .attr('class', 'featured-point')
     .attr('href', url)
-    .attr('width', '+70')
-    .attr('x', x)
-    .attr('y', y)
+    .attr('width', '70')
+    .attr('x', x+60)
+    .attr('y', y+20)
     .attr('fill', color)
     .appendTo($svg);
 
-    return locations = {"x": x, "y": y};
+    return linelocations = {"x": x-50, "y": y+55};
 
 };
 /**
@@ -233,12 +221,12 @@ var drawFeaturedPoint = function (url,color, angle) {
  * @param {string} subtitle 
  * @param {number} angle 
  */
-var drawFeaturedText = function(idName, subtitle, angle) {
+var drawFeaturedText = function(idName, subtitle, x, y) {
 
 
   // Calculate the right xy to place the featuredPoint following a cirlce path
-  var x = center_x + Textradius * Math.cos(angle*Math.PI/180) * 1;
-  var y = center_y + Textradius * Math.sin(angle*Math.PI/180) * 1;
+  //var x = center_x + Textradius * Math.cos(angle*Math.PI/180) * 1;
+  //var y = center_y + Textradius * Math.sin(angle*Math.PI/180) * 1;
 
     //Put the string into lines of text for svg display
     var words = subtitle.split(' ');
@@ -263,17 +251,17 @@ var drawFeaturedText = function(idName, subtitle, angle) {
 
   $(SVG('text'))
     .attr('id', 'featured-text-' + idName)
-    .attr('font-size', '18')
-    .attr('font-family', 'Open Sans Regular')
-    .attr('x', x)
-    .attr('y', y)
+    .attr('font-size', '10')
+    .append(subtitle)
+    .attr('x', x+140)
+    .attr('y', y+50)
     .appendTo($svg);
   //$('#featured-text-'+idName).append(subtitle);
-  $.each(lines, function(index,sentence) {
+  /*$.each(lines, function(index,sentence) {
     console.log("SENTENCE :"+ sentence);
     //$('#featured-text-'+idName).append(sentence);
-    $('#featured-text-'+idName).append('<tspan dx="100" dy="100">LOL</tspan>');
-  });
+    //$('#featured-text-'+idName).append('<tspan dx="100" dy="100">LOL</tspan>');
+  });*/
   coord = {"x": x, "y": y};
   return coord;
 

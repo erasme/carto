@@ -3,13 +3,15 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
         <link rel="stylesheet" href="../fonts/fontawesome-5.4.1/css/all.css">
+        <link rel="stylesheet" type="text/css" href="../css/style.css" >
+        <link rel="stylesheet" type="text/css" href="../css/print.css" media="print">
     </head>
     <body>
         <div class="container">
             <div class="col-wrapper">
                 <!-- INTRODUCTION -->
                 <div class="introduction">
-                        <h2>Une année à Erasme 2017-2018</h2>
+                        <h2>Cartographie des projets</h2>
                         <p>
                             Bienvenue sur la cartographie 2017-2018 des projets d'Erasme, living lab de la Métropole de Lyon.
                         </p>
@@ -22,13 +24,11 @@
             <!--MAP DISPLAY-->
             <div class="col-2">
                 <!--<svg id="points"></svg>-->
-                    <svg>
-                        <image x="360" y="290" width="30%"  xlink:href="../resources/pictures/grand_lyon.svg" /> 
-                        <text x="100" y="100">
-                            <tspan dx="10" dy="20">TEST</tspan>
-                            <tspan dx="10" dy="20">TEST 2</tspan>
-                            <tspan dx="10" dy="20">TEST 3</tspan>
-                        </text>
+                    <svg  xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:ev="http://www.w3.org/2001/xml-events" 
+    viewBox="0 0 1000 1000">
+                        <image x="50" y="100" width="60%"  xlink:href="../resources/pictures/grand_lyon.svg" />
+                         
                     </svg>
                    
             </div>

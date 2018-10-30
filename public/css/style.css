@@ -14,13 +14,20 @@
     src: local('Source Sans Pro Medium'), local('Source-Sans-Pro-Medium'), url(../fonts/SourceSansPro-Regular.ttf) format('truetype');
   }
 
-
+  
 /***** GENERAL SYLING *****/
+
+body {
+    background-image: url("../resources/pictures/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
 
 .container {
     width: 100%;
     height: 100vh;
-    font-family: 'Open Sans','Source Sans Pro', sans-serif;
+    font-family: 'Source Sans Pro Medium','Source Sans Pro', sans-serif;
     font-size: small;
 }
 
@@ -64,8 +71,9 @@
 /* SPECIFIC STYLING */
 
 .introduction h2 {
-    font-family: lo-resteens;
-    font-size: 70px;
+    font-family: 'Ibm Plex Mono Medium','Source Sans Pro', sans-serif;
+    font-weight: 100;
+    font-size: 35px;
     margin-top: 0;
     margin-bottom: 5px;
 }
@@ -85,9 +93,14 @@
 .panel .card {
     display: flex;
     align-items: center;
-    background-color: #f1f1f17d;
     height: 4%;
     padding: 10px;
+    border-bottom: solid 1px;
+    color: #484747;
+}
+
+.panel .card:last-child {
+    border: none;
 }
 
 .panel .card span {
@@ -95,28 +108,34 @@
     text-align: right;
 }
 
+.panel .card span i {
+    font-size: 20px;
+    float: left;   
+}
+
 .panel .card img {
     height: 35px;
     margin-right: 15px;
 }
+
 
 .panel .card .number {
     width: 10%;
     margin-right: 15px;
     font-weight: bold;
     font-size: 15px;
-    font-family: lo-resteens;
 }
 
 .panel .title {
-    text-transform:  uppercase;
-    font-family: lo-resteens;
+    font-family:'Source Sans Pro Medium','Source Sans Pro', sans-serif;
     font-weight: 600;
-    border-radius: 5px;
+    border-radius: 0px 100px 100px 0px;
+    -moz-border-radius: 0px 100px 100px 0px;
+    -webkit-border-radius: 0px 100px 100px 0px;
+    border: 0px solid #000000;
     height: 3%;
     display: flex;
-    justify-content: center;
-    text-align: center;
+    justify-content: left;
     align-items: center;
     font-size: medium;
     color: white;
@@ -126,8 +145,8 @@
 /***** MAP STYLING *****/
 
 .col-2 svg {
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 125%;
 }
 
 .point {
@@ -140,15 +159,25 @@
 
 }
 
+.featured-text {
+    font-family: 'Source Sans Pro Medium','Source Sans Pro', sans-serif;
+}
+
 
 /**** PARTNERS *********/
 .partners {
     display: inline-block;
     float: left;
+    background: white;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
 }
 
 .partners img {
-    width: 3.5vw;
+    width: 3.2vw;
     vertical-align: middle;
     padding: 8px;
 }
