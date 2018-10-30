@@ -1,32 +1,19 @@
 /*FONT IMPORT*/
 
 @font-face {
-    font-family: 'Open Sans';
+    font-family: 'Ibm Plex Mono Medium';
     font-style: normal;
     font-weight: 400;
-    src: local('Open Sans Regular'), local('OpenSans-Regular'), url(../fonts/OpenSans-Regular.ttf) format('truetype');
+    src: local('Ibm Plex Mono Medium'), local('Ibm-Plex-Mono-Medium'), url(../fonts/IBMPlexMono-Medium.ttf) format('truetype');
 }
 
 @font-face {
-    font-family: 'Open Sans';
+    font-family: 'Source Sans Pro Medium';
     font-style: normal;
-    font-weight: 600;
-    src: local('Open Sans Regular'), local('OpenSans-SemiBold'), url(../fonts/OpenSans-SemiBold.ttf) format('truetype');
+    font-weight: 00;
+    src: local('Source Sans Pro Medium'), local('Source-Sans-Pro-Medium'), url(../fonts/SourceSansPro-Regular.ttf) format('truetype');
   }
 
-@font-face {
-    font-family: 'lo-resteens';
-    font-style: normal;
-    font-weight: 400;
-    src: local('lo-resteens'), local('lo-resteens'), url(../fonts/LRTWREGU.TTF) format('truetype');
-}
-
-@font-face {
-    font-family: 'lo-resteens';
-    font-style: normal;
-    font-weight: 600;
-    src: local('lo-resteens'), local('lo-resteens'), url(../fonts/LRTWBOLD.TTF) format('truetype');
-  }
 
 /***** GENERAL SYLING *****/
 
